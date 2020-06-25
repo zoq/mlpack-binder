@@ -1,0 +1,11 @@
+name: xeus-cling-nighlty
+channels:
+  - zoq
+  - conda-forge
+dependencies:
+  - xeus-cling
+  - mlpack
+  - xtensor=0.21.2
+  - llvmdev=5
+  - xtensor-blas=0.17.1
+  - notebook
