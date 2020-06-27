@@ -4,7 +4,7 @@ channels:
   - conda-forge
 dependencies:
   - xeus-cling>=0.9.0.5
-  - mlpack
+  - mlpack>=3.3.2.1
   - xtensor=0.21.2
   - llvmdev=5
   - xtensor-blas=0.17.1
