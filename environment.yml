@@ -9,4 +9,3 @@ dependencies:
   - llvmdev=5
   - xtensor-blas=0.17.1
   - notebook
-  - vim
