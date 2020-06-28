@@ -3,7 +3,7 @@ channels:
   - zoq
   - conda-forge
 dependencies:
-  - xeus-cling>=0.9.0.5
+  - xeus-cling>=0.9.0.6
   - mlpack>=3.3.2.1
   - xtensor=0.21.2
   - llvmdev=5
