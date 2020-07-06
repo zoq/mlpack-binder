@@ -14,7 +14,7 @@ conda install jupyterlab=2
 # install necessaary kernel and debugger related dependency following 
 # https://github.com/jupyterlab/debugger#installation , doing it in
 # postBuild and not `environment.yml` to avoid breaking jupyter-offlinenotebook
-conda install -c conda-forge xeus-python=0.6.12 ptvsd git
+conda install -c zoq -c conda-forge xeus-cling mlpack xtensor=0.21.2 llvmdev=5 xeus-python=0.6.12 ptvsd git
 # install the debugger in postBuild and not `environment.yml` to 
 # avoid breaking jupyter-offlinenotebook
 jupyter labextension install @jupyterlab/debugger
