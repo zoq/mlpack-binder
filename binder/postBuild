@@ -14,7 +14,7 @@ conda install jupyterlab=2
 # install necessaary kernel and debugger related dependency following 
 # https://github.com/jupyterlab/debugger#installation , doing it in
 # postBuild and not `environment.yml` to avoid breaking jupyter-offlinenotebook
-conda install -c conda-forge xeus-python=0.6.12 ptvsd
+conda install -c conda-forge xeus-python=0.6.12 ptvsd git
 # install the debugger in postBuild and not `environment.yml` to 
 # avoid breaking jupyter-offlinenotebook
 jupyter labextension install @jupyterlab/debugger
@@ -33,8 +33,9 @@ python -m pip install seaborn
 # different directory
 SRCDIR=/srv/conda/src/jupyter-offlinenotebook
 mkdir -p "$SRCDIR"
-cp -a * "$SRCDIR"
+#cp -a * "$SRCDIR"
 cd "$SRCDIR"
+git clone https://github.com/manics/jupyter-offlinenotebook.git .
 python -m pip install .
 jupyter labextension link --debug
 
