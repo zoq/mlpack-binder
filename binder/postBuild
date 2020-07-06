@@ -1,6 +1,5 @@
 #!/bin/bash
-set -eux
 
-# jupyter-offlinenotebook is automatically installed by repo2docker.
-# Uninstall to avoid conflicts
-jupyter labextension uninstall --no-build jupyter-offlinenotebook
+# Install a JupyterLab extension for demonstration purposes
+jupyter labextension install @jupyterlab/geojson-extension jupyterlab-drawio
+jupyter labextension install @jupyterlab/google-drive
