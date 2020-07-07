@@ -14,14 +14,13 @@ conda install jupyterlab=2
 # install necessaary kernel and debugger related dependency following 
 # https://github.com/jupyterlab/debugger#installation , doing it in
 # postBuild and not `environment.yml` to avoid breaking jupyter-offlinenotebook
-conda install -c zoq -c conda-forge xeus-cling mlpack xtensor=0.21.2 llvmdev=5 xeus-python=0.6.12 ptvsd git nbresuse nodejs
+conda install -c zoq -c conda-forge xeus-cling mlpack xtensor=0.21.2 llvmdev=5 xeus-python=0.6.12 ptvsd git nbresuse=0.3.6 nodejs
 # install the debugger in postBuild and not `environment.yml` to 
 # avoid breaking jupyter-offlinenotebook
 jupyter labextension install @jupyterlab/debugger
 jupyter labextension install @jupyterlab/toc
-jupyter labextension install @jupyterlab/git
-jupyter labextension install jupyterlab-topbar-extension jupyterlab-system-monitor
-
+jupyter labextension install jupyterlab-topbar-extension@0.5.0
+jupyter labextension install jupyterlab-system-monitor@0.6.0
 # add extra modules needed for examples
 python -m pip install pandas
 python -m pip install numpy
