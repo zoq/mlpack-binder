@@ -19,8 +19,7 @@ conda install -c zoq -c conda-forge xeus-cling mlpack xtensor=0.21.2 llvmdev=5 x
 # avoid breaking jupyter-offlinenotebook
 jupyter labextension install @jupyterlab/debugger
 jupyter labextension install @jupyterlab/toc
-jupyter labextension install @jupyterlab/jupyterlab-topbar-extension
-jupyter labextension install @jupyterlab/jupyterlab-system-monitor
+
 # add extra modules needed for examples
 python -m pip install pandas
 python -m pip install numpy
