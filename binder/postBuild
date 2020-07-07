@@ -14,19 +14,18 @@ conda install jupyterlab=2
 # install necessaary kernel and debugger related dependency following 
 # https://github.com/jupyterlab/debugger#installation , doing it in
 # postBuild and not `environment.yml` to avoid breaking jupyter-offlinenotebook
-conda install -c zoq -c conda-forge xeus-cling mlpack xtensor=0.21.2 llvmdev=5 xeus-python=0.6.12 ptvsd git
+conda install -c zoq -c conda-forge xeus-cling mlpack xtensor=0.21.2 llvmdev=5 xeus-python=0.6.12 ptvsd git nbresuse nodejs
 # install the debugger in postBuild and not `environment.yml` to 
 # avoid breaking jupyter-offlinenotebook
 jupyter labextension install @jupyterlab/debugger
-jupyter labextension install @jupyterlab/toc #include convenient Table of Contents extension
+jupyter labextension install @jupyterlab/toc
+jupyter labextension install @jupyterlab/git
+jupyter labextension install jupyterlab-topbar-extension jupyterlab-system-monitor
 
 # add extra modules needed for examples
 python -m pip install pandas
-python -m pip install biopandas
 python -m pip install numpy
-python -m pip install biopython
 python -m pip install seaborn
-
 
 # repo2docker copies this repo into $HOME which means jupyter labextension
 # picks up hidden dot files and runs into problems so install from a
@@ -39,6 +38,11 @@ git clone https://github.com/manics/jupyter-offlinenotebook.git .
 python -m pip install .
 jupyter labextension link --debug
 
-
-# clean up a bit since may be using the starting directory to work
-cd ~
+# Add mlpack dependencies to the main header.
+sed -i '1i#define ARMA_DONT_USE_WRAPPER' /srv/conda/envs/notebook/include/mlpack/core.hpp
+sed -i '1i#pragma cling load("/srv/conda/envs/notebook/lib/libomp.so")' /srv/conda/envs/notebook/include/mlpack/core.hpp
+sed -i '1i#pragma cling load("/srv/conda/envs/notebook/lib/libboost_program_options.so")' /srv/conda/envs/notebook/include/mlpack/core.hpp
+sed -i '1i#pragma cling load("/srv/conda/envs/notebook/lib/libboost_unit_test_framework.so")' /srv/conda/envs/notebook/include/mlpack/core.hpp
+sed -i '1i#pragma cling load("/srv/conda/envs/notebook/lib/libboost_serialization.so")' /srv/conda/envs/notebook/include/mlpack/core.hpp
+sed -i '1i#pragma cling load("/srv/conda/envs/notebook/lib/libmlpack.so")' /srv/conda/envs/notebook/include/mlpack/core.hpp
+sed -i '1i#pragma cling load("/srv/conda/envs/notebook/lib/libarmadillo.so")' /srv/conda/envs/notebook/include/mlpack/core.hpp
