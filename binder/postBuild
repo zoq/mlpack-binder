@@ -38,10 +38,10 @@ python -m pip install .
 jupyter labextension link --debug
 
 # Add mlpack dependencies to the main header.
-sed -i '1i\n#define ARMA_DONT_USE_WRAPPER\n' /srv/conda/envs/notebook/include/mlpack/core.hpp
-sed -i '1i\n#pragma cling load("/srv/conda/envs/notebook/lib/libomp.so")\n' /srv/conda/envs/notebook/include/mlpack/core.hpp
-sed -i '1i\n#pragma cling load("/srv/conda/envs/notebook/lib/libboost_program_options.so")\n' /srv/conda/envs/notebook/include/mlpack/core.hpp
-sed -i '1i\n#pragma cling load("/srv/conda/envs/notebook/lib/libboost_unit_test_framework.so")\n' /srv/conda/envs/notebook/include/mlpack/core.hpp
-sed -i '1i\n#pragma cling load("/srv/conda/envs/notebook/lib/libboost_serialization.so")\n' /srv/conda/envs/notebook/include/mlpack/core.hpp
-sed -i '1i\n#pragma cling load("/srv/conda/envs/notebook/lib/libmlpack.so")\n' /srv/conda/envs/notebook/include/mlpack/core.hpp
-sed -i '1i\n#pragma cling load("/srv/conda/envs/notebook/lib/libarmadillo.so")\n' /srv/conda/envs/notebook/include/mlpack/core.hpp
+(echo '#define ARMA_DONT_USE_WRAPPER' && cat /srv/conda/envs/notebook/include/mlpack/core.hpp) > /srv/conda/envs/notebook/include/mlpack/core.hpp.swap && mv /srv/conda/envs/notebook/include/mlpack/core.hpp.swap /srv/conda/envs/notebook/include/mlpack/core.hpp
+(echo '#pragma cling load("/srv/conda/envs/notebook/lib/libomp.so"' && cat /srv/conda/envs/notebook/include/mlpack/core.hpp) > /srv/conda/envs/notebook/include/mlpack/core.hpp.swap && mv /srv/conda/envs/notebook/include/mlpack/core.hpp.swap /srv/conda/envs/notebook/include/mlpack/core.hpp
+(echo '#pragma cling load("/srv/conda/envs/notebook/lib/libboost_program_options.so")' && cat /srv/conda/envs/notebook/include/mlpack/core.hpp) > /srv/conda/envs/notebook/include/mlpack/core.hpp.swap && mv /srv/conda/envs/notebook/include/mlpack/core.hpp.swap /srv/conda/envs/notebook/include/mlpack/core.hpp
+(echo '#pragma cling load("/srv/conda/envs/notebook/lib/libboost_unit_test_framework.so")' && cat /srv/conda/envs/notebook/include/mlpack/core.hpp) > /srv/conda/envs/notebook/include/mlpack/core.hpp.swap && mv /srv/conda/envs/notebook/include/mlpack/core.hpp.swap /srv/conda/envs/notebook/include/mlpack/core.hpp
+(echo '#pragma cling load("/srv/conda/envs/notebook/lib/libboost_serialization.so")' && cat /srv/conda/envs/notebook/include/mlpack/core.hpp) > /srv/conda/envs/notebook/include/mlpack/core.hpp.swap && mv /srv/conda/envs/notebook/include/mlpack/core.hpp.swap /srv/conda/envs/notebook/include/mlpack/core.hpp
+(echo '#pragma cling load("/srv/conda/envs/notebook/lib/libmlpack.so")' && cat /srv/conda/envs/notebook/include/mlpack/core.hpp) > /srv/conda/envs/notebook/include/mlpack/core.hpp.swap && mv /srv/conda/envs/notebook/include/mlpack/core.hpp.swap /srv/conda/envs/notebook/include/mlpack/core.hpp
+(echo '#pragma cling load("/srv/conda/envs/notebook/lib/libarmadillo.so")' && cat /srv/conda/envs/notebook/include/mlpack/core.hpp) > /srv/conda/envs/notebook/include/mlpack/core.hpp.swap && mv /srv/conda/envs/notebook/include/mlpack/core.hpp.swap /srv/conda/envs/notebook/include/mlpack/core.hpp
