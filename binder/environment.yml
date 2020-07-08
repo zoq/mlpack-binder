@@ -1,4 +1,8 @@
+channels:
+  - zoq
+  - conda-forge
 dependencies:
+  - xeus-cling
   - matplotlib
   - numpy
   - pip
