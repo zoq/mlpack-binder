@@ -4,15 +4,8 @@ set -eux
 env | sort
 pwd
 
-# jupyter-offlinenotebook is automatically installed by repo2docker.
-# Uninstall to avoid conflicts
-jupyter labextension uninstall --no-build jupyter-offlinenotebook
 
 
-wget https://julialang-s3.julialang.org/bin/linux/x64/1.4/julia-1.4.2-linux-x86_64.tar.gz
-tar -xvzf julia-1.4.2-linux-x86_64.tar.gz
-cp -r julia-1.4.2 /opt/
-ln -s /opt/julia-1.4.2/bin/julia /usr/local/bin/julia
 
 # Upgrade jupyterlab if necessary
 conda install jupyterlab
@@ -20,18 +13,18 @@ conda install jupyterlab
 # install necessaary kernel and debugger related dependency following 
 # https://github.com/jupyterlab/debugger#installation , doing it in
 # postBuild and not `environment.yml` to avoid breaking jupyter-offlinenotebook
-conda install -c zoq -c conda-forge xeus-cling mlpack xtensor=0.21.2 llvmdev=5 xeus-python=0.6.12 ptvsd git
+#conda install -c zoq -c conda-forge xeus-cling mlpack xtensor=0.21.2 llvmdev=5 xeus-python=0.6.12 ptvsd git
 
 # add extra modules needed for examples
-python -m pip install pandas
-python -m pip install numpy
-python -m pip install seaborn
+#python -m pip install pandas
+#python -m pip install numpy
+#python -m pip install seaborn
 
 # repo2docker copies this repo into $HOME which means jupyter labextension
 # picks up hidden dot files and runs into problems so install from a
 # different directory.
-SRCDIR=/srv/conda/src/jupyter-offlinenotebook
-mkdir -p "$SRCDIR"
+#SRCDIR=/srv/conda/src/jupyter-offlinenotebook
+#mkdir -p "$SRCDIR"
 #cp -a * "$SRCDIR"
 #cd "$SRCDIR"
 #git clone https://github.com/manics/jupyter-offlinenotebook.git .
