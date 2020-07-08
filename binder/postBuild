@@ -8,6 +8,12 @@ pwd
 # Uninstall to avoid conflicts
 jupyter labextension uninstall --no-build jupyter-offlinenotebook
 
+
+wget https://julialang-s3.julialang.org/bin/linux/x64/1.4/julia-1.4.2-linux-x86_64.tar.gz
+tar -xvzf julia-1.4.2-linux-x86_64.tar.gz
+sudo cp -r julia-1.4.2 /opt/
+sudo ln -s /opt/julia-1.4.2/bin/julia /usr/local/bin/julia
+
 # Upgrade jupyterlab if necessary
 conda install jupyterlab
 
