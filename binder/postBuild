@@ -27,10 +27,10 @@ python -m pip install seaborn
 SRCDIR=/srv/conda/src/jupyter-offlinenotebook
 mkdir -p "$SRCDIR"
 #cp -a * "$SRCDIR"
-cd "$SRCDIR"
-git clone https://github.com/manics/jupyter-offlinenotebook.git .
-python -m pip install .
-jupyter labextension link --debug
+#cd "$SRCDIR"
+#git clone https://github.com/manics/jupyter-offlinenotebook.git .
+#python -m pip install .
+#jupyter labextension link --debug
 
 # Add mlpack dependencies to the main header.
 rm /srv/conda/envs/notebook/include/mlpack/core.hpp
