@@ -32,5 +32,5 @@ conda install jupyterlab
 #jupyter labextension link --debug
 
 # Add mlpack dependencies to the main header.
-rm /srv/conda/envs/notebook/include/mlpack/core.hpp
-wget -O /srv/conda/envs/notebook/include/mlpack/core.hpp http://data.kurg.org/mlpack-core-binder.hpp
+#rm /srv/conda/envs/notebook/include/mlpack/core.hpp
+#wget -O /srv/conda/envs/notebook/include/mlpack/core.hpp http://data.kurg.org/mlpack-core-binder.hpp
