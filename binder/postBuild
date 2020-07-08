@@ -27,7 +27,7 @@ python -m pip install seaborn
 
 # repo2docker copies this repo into $HOME which means jupyter labextension
 # picks up hidden dot files and runs into problems so install from a
-# different directory
+# different directory.
 SRCDIR=/srv/conda/src/jupyter-offlinenotebook
 mkdir -p "$SRCDIR"
 #cp -a * "$SRCDIR"
