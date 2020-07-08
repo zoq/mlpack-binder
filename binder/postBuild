@@ -36,6 +36,9 @@ git clone https://github.com/manics/jupyter-offlinenotebook.git .
 python -m pip install .
 jupyter labextension link --debug
 
+jupyter kernelspec remove -f xcpp11
+jupyter kernelspec remove -f xcpp17
+
 # Add mlpack dependencies to the main header.
 rm /srv/conda/envs/notebook/include/mlpack/core.hpp
 wget -O /srv/conda/envs/notebook/include/mlpack/core.hpp http://data.kurg.org/mlpack-core-binder.hpp
