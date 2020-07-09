@@ -51,6 +51,7 @@ mkdir -p ./binder/gophernotes
 cat >| ./binder/gophernotes/kernel.json << EOF
 {
     "argv": [
+        "/home/jovyan/go/bin/gophernotes"
         "gophernotes",
         "{connection_file}"
     ],
