@@ -14,7 +14,7 @@ conda install jupyterlab=2
 # install necessaary kernel and debugger related dependency following 
 # https://github.com/jupyterlab/debugger#installation , doing it in
 # postBuild and not `environment.yml` to avoid breaking jupyter-offlinenotebook
-conda install -c zoq -c conda-forge xeus-cling mlpack xtensor=0.21.2 llvmdev=5 xeus-python=0.6.12 ptvsd git nodejs go
+conda install -c zoq -c conda-forge xeus-cling mlpack xtensor=0.21.2 llvmdev=5 xeus-python=0.6.12 ptvsd git nodejs
 # install the debugger in postBuild and not `environment.yml` to 
 # avoid breaking jupyter-offlinenotebook
 jupyter labextension install @jupyterlab/debugger
@@ -39,24 +39,57 @@ jupyter labextension link --debug
 jupyter kernelspec remove -f xcpp11
 jupyter kernelspec remove -f xcpp17
 
+GOVERS=1.13.5
+
+mkdir -p \
+	$HOME/.local/go/$GOVERS \
+	$HOME/go
+
+curl -O -L https://golang.org/dl/go${GOVERS}.linux-amd64.tar.gz
+tar -C $HOME/.local/go/$GOVERS -zxf go${GOVERS}.linux-amd64.tar.gz
+/bin/rm go${GOVERS}.linux-amd64.tar.gz
+
+export GOROOT=$HOME/.local/go/$GOVERS/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
 # Install go dependencies and packages.
 go get golang.org/x/tools/cmd/goimports
 #git clone -b jupyter-display-data https://github.com/sbinet-gonum/ng $GOPATH/src/neugram.io/ng
 go get github.com/gopherdata/gophernotes
 go get gonum.org/v1/gonum/...
 go get gonum.org/v1/plot/...
+go get -u -d mlpack.org/v1/mlpack
+
+## setup environment for Go
+cat >> $HOME/.setup-go << EOF
+## setup Go
+export GOROOT=$GOROOT
+export GOPATH=$GOPATH
+export PATH=\$GOPATH/bin:\$GOROOT/bin:\$PATH
+EOF
+
+cat >> $HOME/.bashrc << EOF
+. ~/.setup-go
+EOF
+
 
 ## install the Go kernel
 mkdir -p ./binder/gophernotes
 cat >| ./binder/gophernotes/kernel.json << EOF
 {
     "argv": [
-        "/home/jovyan/go/bin/gophernotes",
+        "$GOPATH/bin/gophernotes",
         "{connection_file}"
     ],
     "display_name": "Go",
     "language": "go",
-    "name": "go"
+    "name": "go",
+    "env": {
+        "GOPATH": $GOPATH"",
+        "GOROOT": "$GOROOT",
+        "PATH":   "$GOPATH/bin:$GOROOT/bin:$PATH"
+    }
 }
 EOF
 jupyter kernelspec install ./binder/gophernotes --user
