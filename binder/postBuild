@@ -55,11 +55,10 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 # Install go dependencies and packages.
 go get golang.org/x/tools/cmd/goimports
-#git clone -b jupyter-display-data https://github.com/sbinet-gonum/ng $GOPATH/src/neugram.io/ng
 go get github.com/gopherdata/gophernotes
 go get gonum.org/v1/gonum/...
 go get gonum.org/v1/plot/...
-go get -u -d mlpack.org/v1/mlpack
+#go get -u -d mlpack.org/v1/mlpack
 
 ## setup environment for Go
 cat >> $HOME/.setup-go << EOF
