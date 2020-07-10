@@ -83,12 +83,7 @@ cat >| ./binder/gophernotes/kernel.json << EOF
     ],
     "display_name": "Go",
     "language": "go",
-    "name": "go",
-    "env": {
-        "GOPATH": "$GOPATH",
-        "GOROOT": "$GOROOT",
-        "PATH":   "$GOPATH/bin:$GOROOT/bin:$PATH"
-    }
+    "name": "go"
 }
 EOF
 jupyter kernelspec install ./binder/gophernotes --user
