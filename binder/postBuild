@@ -14,7 +14,7 @@ conda install jupyterlab=2
 # install necessaary kernel and debugger related dependency following 
 # https://github.com/jupyterlab/debugger#installation , doing it in
 # postBuild and not `environment.yml` to avoid breaking jupyter-offlinenotebook
-conda install -c zoq -c conda-forge xeus-cling mlpack xtensor=0.21.2 llvmdev=5 xeus-python=0.6.12 ptvsd git nodejs
+conda install -c zoq -c conda-forge -c hi2p-perim xeus-cling mlpack xtensor=0.21.2 llvmdev=5 xeus-python=0.6.12 ptvsd git nodejs
 # install the debugger in postBuild and not `environment.yml` to 
 # avoid breaking jupyter-offlinenotebook
 jupyter labextension install @jupyterlab/debugger
@@ -67,6 +67,7 @@ cat >> $HOME/.setup-go << EOF
 export GOROOT=$GOROOT
 export GOPATH=$GOPATH
 export PATH=\$GOPATH/bin:\$GOROOT/bin:\$PATH
+export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/srv/conda/envs/notebook/lib/
 EOF
 
 cat >> $HOME/.bashrc << EOF
