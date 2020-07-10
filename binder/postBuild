@@ -67,7 +67,6 @@ cat >> $HOME/.setup-go << EOF
 export GOROOT=$GOROOT
 export GOPATH=$GOPATH
 export PATH=\$GOPATH/bin:\$GOROOT/bin:\$PATH
-export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/srv/conda/envs/notebook/lib/
 EOF
 
 cat >> $HOME/.bashrc << EOF
@@ -95,6 +94,11 @@ cat >| ./binder/gophernotes/kernel.json << EOF
 EOF
 jupyter kernelspec install ./binder/gophernotes --user
 
+export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/srv/conda/envs/notebook/lib/
+
 # Add mlpack dependencies to the main header.
 rm /srv/conda/envs/notebook/include/mlpack/core.hpp
 wget -O /srv/conda/envs/notebook/include/mlpack/core.hpp http://data.kurg.org/mlpack-core-binder.hpp
+
+wget https://gist.githubusercontent.com/zoq/3fd26a3cd2efa63ce14db3b435db79e2/raw/3e8bef71a1081f5111c5c5b140aea49663134804/link.py
+python link.py
