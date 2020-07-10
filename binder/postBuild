@@ -94,7 +94,7 @@ cat >| ./binder/gophernotes/kernel.json << EOF
 EOF
 jupyter kernelspec install ./binder/gophernotes --user
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/srv/conda/envs/notebook/lib/
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/srv/conda/envs/notebook/lib/
 
 # Add mlpack dependencies to the main header.
 rm /srv/conda/envs/notebook/include/mlpack/core.hpp
