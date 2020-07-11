@@ -58,7 +58,6 @@ go get golang.org/x/tools/cmd/goimports
 go get github.com/gopherdata/gophernotes
 go get gonum.org/v1/gonum/...
 go get gonum.org/v1/plot/...
-#go get -u -d mlpack.org/v1/mlpack
 
 ## setup environment for Go
 cat >> $HOME/.setup-go << EOF
@@ -71,7 +70,6 @@ EOF
 cat >> $HOME/.bashrc << EOF
 . ~/.setup-go
 EOF
-
 
 ## install the Go kernel
 mkdir -p ./binder/gophernotes
@@ -94,7 +92,8 @@ cat >| ./binder/gophernotes/kernel.json << EOF
 EOF
 jupyter kernelspec install ./binder/gophernotes --user
 
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/srv/conda/envs/notebook/lib/
+go get -u -d mlpack.org/v1/mlpack
+CGO_CFLAGS="-I/srv/conda/envs/notebook/include" CGO_LDFLAGS="-L/srv/conda/envs/notebook/lib/" go install -v mlpack.org/v1/mlpack
 
 # Add mlpack dependencies to the main header.
 rm /srv/conda/envs/notebook/include/mlpack/core.hpp
