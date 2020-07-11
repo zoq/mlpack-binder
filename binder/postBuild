@@ -83,7 +83,13 @@ cat >| ./binder/gophernotes/kernel.json << EOF
     ],
     "display_name": "Go",
     "language": "go",
-    "name": "go"
+    "name": "go",
+    "env" : {
+        "CGO_CFLAGS": "-I/srv/conda/envs/notebook/include",
+        "CFLAGS": "-I/srv/conda/envs/notebook/include",
+        "CGO_LDFLAGS": "-L/srv/conda/envs/notebook/lib/",
+        "LDFLAGS": "-L/srv/conda/envs/notebook/lib/"
+    }
 }
 EOF
 jupyter kernelspec install ./binder/gophernotes --user
